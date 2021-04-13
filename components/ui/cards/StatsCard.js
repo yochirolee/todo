@@ -2,13 +2,15 @@ import ProgressBar from "../Progress/progressBar";
 
 export default function StatsCard({ Text, Cant, Percent }) {
   let icon = "";
-
+  let color = "";
   switch (Text) {
     case "Completed":
       icon = "las la-check text-4xl text-green-400";
+      color = "green";
       break;
     case "Pending":
       icon = "las la-hourglass text-4xl text-red-500";
+      color = "red";
       break;
     case "Totals":
       icon = "las la-tasks text-4xl ";
@@ -20,19 +22,15 @@ export default function StatsCard({ Text, Cant, Percent }) {
       <div className="  items-center flex flex-row justify-around  p-4">
         <div className="items-center flex flex-col">
           <p>{Text}</p>
-          <p
-            className={` ring-yellow-500 my-2 grid place-items-center rounded-full ${
-              Percent ? "h-6 w-6 ring-2" : "ring-4 h-10 w-10"
-            } `}
-          >
+          <p className=" ring-yellow-500 my-2 grid place-items-center rounded-full  ring-4 h-10 w-10">
             {Cant}
           </p>
         </div>
-        <div>
+        <div className="flex flex-col mt-4">
           <i className={icon}></i>
+          <ProgressBar Percent={Percent} color={color} />
         </div>
       </div>
-      <ProgressBar Percent={Percent} />
     </div>
   );
 }

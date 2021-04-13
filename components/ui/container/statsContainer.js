@@ -11,7 +11,7 @@ export default function StatsContainer({ todoList }) {
   const PendingPercent = (Pending * 100) / Total;
 
   return (
-    <div className="px-6 grid grid-flow-col grid-cols-3 gap-2 mt-4 ">
+    <div className="px-10 grid grid-flow-col grid-cols-3 gap-8 mt-6 ">
       <StatsCard Text="Totals" Cant={Total} />{" "}
       <StatsCard Text="Completed" Cant={Completed} Percent={CompletePercent} />
       <StatsCard Text="Pending" Cant={Pending} Percent={PendingPercent} />

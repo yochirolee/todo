@@ -1,13 +1,19 @@
-import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import TaskCard from "../components/ui/cards/TaskCard";
 import CardsContainer from "../components/ui/container/cardsContainer";
 import StatsContainer from "../components/ui/container/statsContainer";
-import SideBar from "../components/ui/sidebar/sidebar";
+import NewTaskForm from "../components/ui/forms/newTaskForm";
+
 import { TodoList } from "../data/data";
+import Layout from "../components/ui/layout/Layout";
 
 export default function Home() {
   const [todoList, setTodoList] = useState(TodoList);
+  const [isNew, setIsNew] = useState(false);
+
+  const handleIsNew = () => {
+    setIsNew(!isNew);
+  };
 
   const handleTodoChange = (todo) => {
     todo.complete = !todo.complete;
@@ -21,41 +27,29 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <Head>
-        <title>Next Todo</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="stylesheet"
-          href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
-        ></link>
-      </Head>
-
-      <main>
-        <div className=" bg-gray-600  h-screen text-white  mx-auto grid place-items-center">
-          <div className="container relative w-full h-full bg-gray-600 rounded-lg flex flex-row ">
-            <div className='absolute h-8 flex items-center right-12 top-6 border rounded-full px-3'>
-              <input className='bg-gray-600 outline-none'></input>
-              <i className="las la-search"></i>
-            </div>
-            <SideBar />
-        
-            <div className="bg-gray-800 rounded-lg h-5/6 w-5/6 my-auto mr-10">
-              {/* --STATS CONTAINER--  */}
-              <StatsContainer todoList={todoList} />
-              {/* --STATS CONTAINER--  */}
-
-              {/* --CARD CONTAINER--  */}
-              <CardsContainer>
-                {TodoList.map((todo) => (
-                  <TaskCard todo={todo} handleTodoChange={handleTodoChange} />
-                ))}
-              </CardsContainer>
-              {/* --END CARD CONTAINER--  */}
-            </div>
+    <Layout>
+      <StatsContainer todoList={todoList} />
+      {isNew ? (
+        <NewTaskForm />
+      ) : (
+        <CardsContainer>
+          <div className="flex flex-row justify-end px-20">
+            <button
+              onClick={() => handleIsNew()}
+              className="mt-2 bg-yellow-500 rounded-full mr-2 px-3 py-1 my-4 "
+            >
+              New Task
+            </button>
           </div>
-        </div>
-      </main>
-    </div>
+          {TodoList.map((todo) => (
+            <TaskCard
+              todo={todo}
+              key={todo.id}
+              handleTodoChange={handleTodoChange}
+            />
+          ))}
+        </CardsContainer>
+      )}
+    </Layout>
   );
 }
