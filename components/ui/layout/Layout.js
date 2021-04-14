@@ -14,12 +14,12 @@ export default function Layout(props) {
       </Head>
 
       <main>
-        <div className=" bg-gray-600  h-screen text-white  mx-auto grid place-items-center">
+        <div className=" bg-gray-600  h-screen text-white  mx-auto ">
           <div className=" relative w-full h-full bg-gray-600 rounded-lg flex flex-row ">
             <Search />
             <SideBar />
 
-            <div className="bg-gray-800 rounded-lg h-5/6 w-full  my-auto mr-10">
+            <div className="bg-gray-800 rounded-lg w-full h-5/6  my-auto md:mr-10">
               {props.children}
             </div>
           </div>

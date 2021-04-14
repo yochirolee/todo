@@ -23,7 +23,7 @@ export default function SideBar() {
   };
 
   return (
-    <div className="sidebar md:w-1/6 pl-8 mt-20">
+    <div className="sidebar md:w-1/6 md:pl-8 mt-20">
       <ul className=" flex flex-col cursor-pointer ">
         <li
           onClick={(e) => handleActiveLink(e, 0)}
