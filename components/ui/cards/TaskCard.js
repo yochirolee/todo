@@ -7,16 +7,16 @@ export default function TaskCard({ todo, handleTodoChange }) {
   const isChecked = todo.complete;
 
   return (
-    <div className="flex  flex-row bg-gray-700  justify-around rounded-full my-2  w-5/6 mx-auto h-10 items-center">
+    <div className="flex  flex-row bg-gray-700  justify-around rounded-full my-2  w-5/6 mx-auto h-8 md:h-10 items-center">
       <RoundedCheckBox
         isChecked={isChecked}
         todo={todo}
         handleTodoChange={handleTodoChange}
       />
-      <div className="w-3/5  ">
+      <div className="w-3/5 text-sm md:text-base ">
         <span className="">{todo.title}</span>
       </div>
-      <div className="w-1/3">
+      <div className="w-1/3 text-xs">
         <Badge color={color} text={text} />
       </div>
     </div>

@@ -33,10 +33,10 @@ export default function Home() {
         <NewTaskForm />
       ) : (
         <CardsContainer>
-          <div className="flex flex-row justify-end px-20">
+          <div className="flex flex-row justify-end px-10 lg:px-20">
             <button
               onClick={() => handleIsNew()}
-              className="mt-2 bg-yellow-500 rounded-full mr-2 px-3 py-1 my-4 "
+              className="mt-2 bg-yellow-500 rounded-full mr-2 text-sm md:text-base px-3 py-1 my-4 "
             >
               New Task
             </button>
